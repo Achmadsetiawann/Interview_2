@@ -16,7 +16,7 @@
           class="shrink ml-3 mr-3"
           style="cursor: pointer"
           contain
-          link="/"
+          link="/home"
         >
           mdi-atlassian
         </v-icon>
