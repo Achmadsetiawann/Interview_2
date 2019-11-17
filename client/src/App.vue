@@ -26,6 +26,21 @@
 
       <v-spacer></v-spacer>
 
+      <v-text-field
+        hide-details
+        label="Movie Name"
+        solo-inverted
+        v-model='searchString'
+        class="secondary mt-2"
+      >
+      </v-text-field>
+      <v-btn
+        :disabled="!dataAvailable"
+        @click="searchMovie"
+      >
+        <span class="mr-2">Search</span>
+      </v-btn>
+
       <!-- Navbar item Github -->
       <v-btn
         href="https://github.com/Achmadsetiawann/Interview_2"
@@ -35,12 +50,12 @@
         <v-icon
           large
           color="orange darken-2"
-          class="shrink ml-3 mr-3"
+          class="shrink ml-3 mr-3 "
           style="cursor: pointer"
           contain
           link="/"
         >mdi-github-face</v-icon>
-        <h3 class="nav mr-2">Github</h3>
+        <h3 class="nav mr-2 hidden-xs-only">Github</h3>
 
       </v-btn>
     </v-app-bar>
@@ -52,9 +67,40 @@
 </template>
 
 <script>
+import movieApi from "@/services/MovieApi";
 export default {
   name: "App",
-  components: {}
+  data() {
+    return {
+      searchMovie: []
+    };
+  },
+  methods: {
+    searchMovie(id) {
+      this.$router.push("movie/" + id);
+    },
+
+    fetchResult(value) {
+      movieApi
+        .fetchMovieCollection(value)
+        .then(response => {
+          if (response.Response === "True") {
+            this.movieResponse = response.Search;
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  },
+  mounted() {
+    this.fetchResult(this.name);
+  },
+  watch: {
+    name(value) {
+      this.fetchResult(value);
+    }
+  }
 };
 </script>
 
