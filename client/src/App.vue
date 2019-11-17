@@ -26,6 +26,7 @@
 
       <v-spacer></v-spacer>
 
+      <!-- Navbar Search Item Navbar -->
       <v-text-field
         hide-details
         label="Movie Name"
@@ -67,42 +68,28 @@
 </template>
 
 <script>
-import movieApi from "@/services/MovieApi";
 export default {
   name: "App",
+  components: {},
   data() {
     return {
-      searchMovie: []
+      searchString: ""
     };
   },
   methods: {
-    searchMovie(id) {
-      this.$router.push("movie/" + id);
-    },
-
-    fetchResult(value) {
-      movieApi
-        .fetchMovieCollection(value)
-        .then(response => {
-          if (response.Response === "True") {
-            this.movieResponse = response.Search;
-          }
-        })
-        .catch(error => {
-          console.log(error);
-        });
+    searchMovie() {
+      this.$router.push("/search/" + this.searchString);
+      this.searchString = "";
     }
   },
-  mounted() {
-    this.fetchResult(this.name);
-  },
-  watch: {
-    name(value) {
-      this.fetchResult(value);
+  computed: {
+    dataAvailable() {
+      return this.searchString !== null && this.searchString !== "";
     }
   }
 };
 </script>
+>
 
 
 <style lang="stylus" scoped>

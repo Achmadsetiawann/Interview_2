@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
 import Hdetail from "@/components/Home/Hdetail.vue";
+import SearchMovie from "@/components/SearchMovie/SearchMovie.vue";
 
 Vue.use(VueRouter);
 
@@ -16,6 +17,12 @@ const routes = [
     name: "Hdetail",
     props: true,
     component: Hdetail
+  },
+  {
+    path: "/search/:name",
+    name: "SearchMovie",
+    props: true,
+    component: SearchMovie
   }
 ];
 
