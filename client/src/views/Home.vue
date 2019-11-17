@@ -1,21 +1,28 @@
 <template>
   <v-container grid-list-xl>
+
+    <!-- This Layout Landing Page Home -->
     <v-layout wrap>
       <v-flex
         md4
-        v-for="(item, index) in wholeResponse"
+        v-for="(item, index) in homeResponse"
         :key="index"
         mb-2
       >
+
+        <!-- This Component Page Home Card -->
         <v-card
-          class="secondary"
+          class="primary"
           height="65vh"
         >
+
+          <!-- This Component Card Image Home -->
           <v-img
             :src="item.Poster"
             height="30vh"
           ></v-img>
 
+          <!-- This Component Card Detail Home -->
           <v-card-title primary-title>
             <div>
               <h2>{{item.Title}}</h2>
@@ -46,21 +53,22 @@ export default {
   name: "home",
   data() {
     return {
-      wholeResponse: []
+      homeResponse: []
     };
   },
   mounted() {
+    //this function for get fecth collection on axios
     movieApi
-      .fetchMovieCollection("indiana")
+      .fetchMovieCollection("batman")
       .then(response => {
-        this.wholeResponse = response.Search;
-        this.loading = false;
+        this.homeResponse = response.Search;
       })
       .catch(error => {
         console.log(error);
       });
   },
   methods: {
+    //this function push for get fecth single movie on axios
     singleMovie(id) {
       this.$router.push("/movie/" + id);
     }
@@ -69,12 +77,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.v-progress-circular {
-  margin: 1rem;
-}
-
 * {
   color: white;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
 }
 </style>

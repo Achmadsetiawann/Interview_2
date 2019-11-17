@@ -1,11 +1,14 @@
 <template>
   <v-app>
+
+    <!-- Navbar item -->
     <v-app-bar
       app
       color="black"
       permanent
     >
 
+      <!-- Navbar item logo & Font Setiawan -->
       <div class="d-flex align-center">
         <v-icon
           large
@@ -17,15 +20,13 @@
         >
           mdi-atlassian
         </v-icon>
-        <h2
-          class="nav hidden-xs-only"
-          link="/"
-        >Setiawan
+        <h2 class="nav hidden-xs-only">Setiawan
         </h2>
       </div>
 
       <v-spacer></v-spacer>
 
+      <!-- Navbar item Github -->
       <v-btn
         href="https://github.com/Achmadsetiawann/Interview_2"
         target="_blank"
