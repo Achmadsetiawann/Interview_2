@@ -17,22 +17,30 @@
         >
           mdi-atlassian
         </v-icon>
-        <h1
-          class="font-nav hidden-xs-only"
+        <h2
+          class="nav hidden-xs-only"
           link="/"
         >Setiawan
-        </h1>
+        </h2>
       </div>
 
       <v-spacer></v-spacer>
 
       <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        href="https://github.com/Achmadsetiawann/Interview_2"
         target="_blank"
         text
       >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
+        <v-icon
+          large
+          color="orange darken-2"
+          class="shrink ml-3 mr-3"
+          style="cursor: pointer"
+          contain
+          link="/"
+        >mdi-github-face</v-icon>
+        <h3 class="nav mr-2">Github</h3>
+
       </v-btn>
     </v-app-bar>
 
@@ -51,9 +59,8 @@ export default {
 
 
 <style lang="stylus" scoped>
-.font-nav {
+.nav {
   font-family: 'Dancing Script', cursive;
-  color: white;
 }
 
 * {
